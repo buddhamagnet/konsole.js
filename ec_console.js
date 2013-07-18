@@ -1,6 +1,9 @@
-if (Econ.debug()) {
+  // Wrap this in whatever conditional code you need if the
+  // Konsole should only be available in certain contexts.
 
-  Econ.console = Econ.console || {
+  var Konsole = Konsole || {};
+
+  Konsole.console = Konsole.console || {
 
     consoleApi: ['assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error', 'exception', 'info', 'log', 'table', 'trace', 'warn'],
 
@@ -39,5 +42,4 @@ if (Econ.debug()) {
 
   };
 
-  Econ.console.init();
-}
+  Konsole.console.init();
