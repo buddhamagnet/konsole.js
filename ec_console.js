@@ -19,8 +19,8 @@ if (Econ.debug()) {
     },
 
     init: function() {
-      var i;
-      for (i = 0; i < this.console_api.length; i++) {
+      var i, len = this.console_api.length;
+      for (i = 0; i < len; i++) {
         this.register_function(this.console_api[i]);
       }
     }
