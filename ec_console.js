@@ -18,7 +18,6 @@ if (Econ.debug()) {
         console[fn] = function() {};
       }
       if (typeof console !== "undefined" && typeof console[fn] === "function") {
-        console.log('adding ' + fn);
         this[fn] = function() {
           return console[fn].apply(console, arguments);
         };
@@ -35,7 +34,7 @@ if (Econ.debug()) {
     },
 
     init: function() {
-      this.register_api('consoleApi').register_api('timerApi');
+      this.register_api('consoleApi').register_api('timerApi').register_api('profilerApi').register_api('groupApi');
     }
 
   };
