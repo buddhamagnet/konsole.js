@@ -22,6 +22,9 @@
       }
       if (typeof console !== "undefined" && typeof console[fn] === "function") {
         this[fn] = function() {
+          if (typeof this[fn].callback === "function") {
+            this[fn].callback.apply(null, arguments);
+          }
           return console[fn].apply(console, arguments);
         };
       }
@@ -33,11 +36,17 @@
         this.register_function(this[api][i]);
       }
       return this;
+    },
 
+    register_callback: function(fn, callback) {
+      if (typeof this[fn] === "function") {
+        this[fn].callback = callback;
+      }
     },
 
     init: function() {
       this.register_api('consoleApi').register_api('timerApi').register_api('profilerApi').register_api('groupApi');
+      this.register_callback('error', function(msg) {});
     }
 
   };
